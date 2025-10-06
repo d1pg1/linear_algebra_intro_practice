@@ -11,7 +11,7 @@ def get_matrix(n: int, m: int) -> np.ndarray:
     Returns:
         np.ndarray: matrix n*m.
     """
-    raise NotImplementedError
+    return np.random.rand(n, m)
 
 
 def add(x: np.ndarray, y: np.ndarray) -> np.ndarray:
@@ -24,7 +24,7 @@ def add(x: np.ndarray, y: np.ndarray) -> np.ndarray:
     Returns:
         np.ndarray: matrix sum.
     """
-    raise NotImplementedError
+    return np.add(x, y) 
 
 
 def scalar_multiplication(x: np.ndarray, a: float) -> np.ndarray:
@@ -37,7 +37,7 @@ def scalar_multiplication(x: np.ndarray, a: float) -> np.ndarray:
     Returns:
         np.ndarray: multiplied matrix.
     """
-    raise NotImplementedError
+    return x * a
 
 
 def dot_product(x: np.ndarray, y: np.ndarray) -> np.ndarray:
@@ -50,7 +50,7 @@ def dot_product(x: np.ndarray, y: np.ndarray) -> np.ndarray:
     Returns:
         np.ndarray: dot product.
     """
-    raise NotImplementedError
+    return np.dot(x, y)
 
 
 def identity_matrix(dim: int) -> np.ndarray:
@@ -62,7 +62,7 @@ def identity_matrix(dim: int) -> np.ndarray:
     Returns:
         np.ndarray: identity matrix.
     """
-    raise NotImplementedError
+    return np.eye(dim)
 
 
 def matrix_inverse(x: np.ndarray) -> np.ndarray:
@@ -74,7 +74,7 @@ def matrix_inverse(x: np.ndarray) -> np.ndarray:
     Returns:
         np.ndarray: inverse matrix.
     """
-    raise NotImplementedError
+    return np.linalg.inv(x)
 
 
 def matrix_transpose(x: np.ndarray) -> np.ndarray:
@@ -86,7 +86,7 @@ def matrix_transpose(x: np.ndarray) -> np.ndarray:
     Returns:
         np.ndarray: transosed matrix.
     """
-    raise NotImplementedError
+    return x.T
 
 
 def hadamard_product(x: np.ndarray, y: np.ndarray) -> np.ndarray:
@@ -99,7 +99,7 @@ def hadamard_product(x: np.ndarray, y: np.ndarray) -> np.ndarray:
     Returns:
         np.ndarray: hadamard produc
     """
-    raise NotImplementedError
+    return np.multiply(x, y)
 
 
 def basis(x: np.ndarray) -> tuple[int]:
@@ -111,7 +111,9 @@ def basis(x: np.ndarray) -> tuple[int]:
     Returns:
         tuple[int]: indexes of basis columns.
     """
-    raise NotImplementedError
+    U, s, Vh = np.linalg.svd(x, full_matrices=False)
+    rank = np.sum(s > np.finfo(s.dtype).eps)
+    return tuple(range(rank))
 
 
 def norm(x: np.ndarray, order: int | float | str) -> float:
@@ -124,4 +126,4 @@ def norm(x: np.ndarray, order: int | float | str) -> float:
     Returns:
         float: vector norm
     """
-    raise NotImplementedError
+    return np.linalg.norm(x, ord=order)
