@@ -66,7 +66,7 @@ def linear_combination(vectors: Sequence[np.ndarray], coeffs: Sequence[float]) -
     """
     vectors_matrix = np.column_stack(vectors)
     coeffs_array = np.array(coeffs)
-    return vectors_matrix @ coeffs_array
+    return (vectors_matrix @ coeffs_array)[:, np.newaxis]
 
 
 def dot_product(x: np.ndarray, y: np.ndarray) -> float:
